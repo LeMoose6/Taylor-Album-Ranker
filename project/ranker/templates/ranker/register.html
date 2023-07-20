@@ -1,0 +1,21 @@
+{% extends "ranker/layout.html" %}
+
+{% block main %}
+
+    <h1>Register</h1>
+
+    {% if message %}
+
+        <p class="error-message">{{message}}</p>
+
+    {% endif %}
+    <form action="/register" method="post">
+        {% csrf_token %}
+        <input autofocus name="username" type="text" placeholder="Username">
+        <input name="password" type="password" placeholder="Password">
+        <input name="confirmation" type="password" placeholder="Confirm Password">
+        <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? Login <a href="{% url 'login' %}">here</a>!</p>
+
+{% endblock %}

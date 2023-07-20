@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Taylor Swift Album Ranker</title>
+    <link rel="stylesheet" href="{% static 'ranker/stylesheet.css' %}">
+    <script>const STATIC_URL = "{% static 'ranker/' %}"</script>
+    <script src="{% static 'ranker/layout.js' %}"></script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div id="header">
+        <img id="header-img" src="{% static 'ranker/images/header.png' %}" alt="header image displaying the names of every album">
+    </div>
+
+    <!-- If anything needs to be added to the top of the page -->
+    <div id="top"></div>
+    <div id="main">
+        {% block main %}{% endblock %}
+    </div>
+
+    {% block body %}{% endblock %}
+</body>
+</html>

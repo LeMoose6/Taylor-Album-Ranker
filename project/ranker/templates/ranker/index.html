@@ -1,0 +1,48 @@
+{% extends "ranker/layout.html" %}
+
+{% load static %}
+
+{% block main %}
+
+    <!-- Shows the homepage -->
+    <div id="home-view">
+        <!-- Show the user's top three albums -->
+        <h1>Top Three Albums</h1>
+        <div id="top-3"></div> 
+
+        <!-- Show album ranking three different ways -->
+        <h1>Album Rankings</h1>
+        <div id="album-rank">
+            <!-- Show all the albums ranked by their overall score -->
+            <div id="album-rank-overall">
+                <h2>Overall</h2>
+            </div>
+
+            <!-- Show all the albums based of each song's rating -->
+            <div id="album-rank-score">
+                <h2>Avg Song Score</h2>
+            </div>
+
+            <!-- Show all the albums based of the favorite/skip score -->
+            <div id="album-rank-fav-skip">
+                <h2>Fav/Skip Score</h2>
+            </div>
+        </div>
+
+        <!-- Show song ranking by highest to lowest and vise-versa -->
+        <h1>Song Ranking</h1>
+        <div id="song-rank">
+            <!-- High to Low -->
+            <div id="song-rank-high"></div>
+
+            <!-- Low to High -->
+            <div id="song-rank-low"></div>
+        </div>
+
+        <!-- button that takes the user to the rankings page -->
+        <button id="to-rank">Rank!</button>
+    </div>
+
+{% endblock %}
+
+{% block body %} <script src="{% static 'ranker/index.js' %}"></script> {% endblock %}
