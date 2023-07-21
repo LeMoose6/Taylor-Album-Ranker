@@ -67,7 +67,8 @@ body {
     margin: 0;
 }
 
-#selector {
+#album-selector {
+    margin-top: 10px;
     display: flex;
     flex-wrap: nowrap;
     width: 175%;
@@ -75,10 +76,10 @@ body {
     overflow: scroll;
 }
 
-.selection-img {
-    width: 10%;
-    height: 10%;
-    margin: 1%;
+.selction-img {
+    width: 15%;
+    height: 15%;
+    margin: 0.5%;
 }
 
 h1 {font-size: 3rem;}
