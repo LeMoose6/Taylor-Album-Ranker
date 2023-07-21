@@ -40,7 +40,27 @@
         </div>
 
         <!-- button that takes the user to the rankings page -->
-        <button id="to-rank">Rank!</button>
+        <button class="to-rank">Rank!</button>
+    </div>
+
+    <!-- Song Rating Page -->
+    <div id="rating-view">
+        <div id="album-selector">
+            <img class="selction-img" data-album="1" src="{% static 'ranker/images/album_covers/1.jpeg' %}" alt="Debut">
+            <img class="selction-img" data-album="2" src="{% static 'ranker/images/album_covers/2.jpeg' %}" alt="Fearless">
+            <img class="selction-img" data-album="3" src="{% static 'ranker/images/album_covers/3.jpeg' %}" alt="Speak Now">
+            <img class="selction-img" data-album="4" src="{% static 'ranker/images/album_covers/4.jpeg' %}" alt="Red">
+            <img class="selction-img" data-album="5" src="{% static 'ranker/images/album_covers/5.jpeg' %}" alt="1989">
+            <img class="selction-img" data-album="6" src="{% static 'ranker/images/album_covers/6.jpeg' %}" alt="reputation">
+            <img class="selction-img" data-album="7" src="{% static 'ranker/images/album_covers/7.jpeg' %}" alt="Lover">
+            <img class="selction-img" data-album="8" src="{% static 'ranker/images/album_covers/8.jpeg' %}" alt="folklore">
+            <img class="selction-img" data-album="9" src="{% static 'ranker/images/album_covers/9.jpeg' %}" alt="evermore">
+            <img class="selction-img" data-album="10" src="{% static 'ranker/images/album_covers/10.jpeg' %}" alt="Midnights">
+        </div>
+
+        <div id="rating-rater"></div>
+
+        <button class="to-home">Home</button>
     </div>
 
 {% endblock %}

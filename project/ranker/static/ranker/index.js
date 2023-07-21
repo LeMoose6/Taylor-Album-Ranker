@@ -154,9 +154,9 @@ function load_album_rankings(album_ranking) {
 }
 
 function load_homepage(album_ranking) {
-    const home_view = document.querySelector('#home-view');
     // Display the homepage, and hide the other pages
-    home_view.style.display = 'block';
+    document.querySelector('#home-view').style.display = 'block';
+    document.querySelector('#rating-view').style.display = 'none';
 
     // Show the top three albums
     load_top_three(album_ranking);
