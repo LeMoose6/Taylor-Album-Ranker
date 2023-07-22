@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-h@=zk&mjg@q3_@uhgiz!8ydxx)tom9k)kpl(re%vry6u^2arus"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://taylor-swift-album-ranker.onrender.com']
 
 
 # Application definition
@@ -124,4 +124,4 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CSRF_TRUSTED_ORIGINS = ['https://lemoose6-psychic-broccoli-76jrgjjv5952497-8000.preview.app.github.dev']
+CSRF_TRUSTED_ORIGINS = ['https://taylor-swift-album-ranker.onrender.com']
