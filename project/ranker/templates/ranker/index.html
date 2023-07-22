@@ -58,7 +58,19 @@
             <img class="selection-img" data-album="10" src="{% static 'ranker/images/album_covers/10.jpeg' %}" alt="Midnights">
         </div>
 
-        <div id="rating-rater"></div>
+        <table id="rating-rater">
+            <thead>
+                <tr>
+                    <th>Song</th>
+                    <th>Score</th>
+                    <th>Favorite</th>
+                    <th>Skip</th>
+                </tr>
+            </thead>
+            <tbody id="rating-rater-body">
+
+            </tbody>
+        </table>
 
         <button class="to-home">Home</button>
     </div>
