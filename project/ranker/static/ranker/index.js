@@ -9,6 +9,7 @@ function start() {
 // Homepage
 
 function load_top_three(album_ranking) {
+    document.querySelector('#top-3').innerHTML = '';
     for (i=0;i<3;i++) {
         // Add an album
         album_element = document.createElement('div');
@@ -64,6 +65,7 @@ function load_top_three(album_ranking) {
 }
 
 function load_album_ranking_type(ranking, element) {
+    element.innerHTML = '';
     for (i=0;i<10;i++) {
         const album_element = document.createElement('div');
         album_element.classList.add('album-ranking');
