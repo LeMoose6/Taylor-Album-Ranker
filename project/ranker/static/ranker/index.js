@@ -1,6 +1,7 @@
 // Start the application
 
 function start() {
+    album_selector();
     main();
     buttons();
 }
@@ -167,6 +168,25 @@ function load_homepage(album_ranking) {
 }
 
 // Rating Page
+
+function select_album(album_id) {
+}
+
+function album_selector() {
+    const selection_imgs = document.querySelectorAll('.selection-img');
+    selection_imgs.forEach(img => {
+        img.addEventListener('click', () => {
+            selection_imgs.forEach(item => {
+                item.style.width = '13%';
+                item.style.height = '13%'
+            });
+
+            img.style.width = '18%';
+
+            select_album(Number(img.dataset.album));
+        });
+    });
+}
 
 function load_rating_page() {
     // Show rating page, hide the others\
