@@ -1,14 +1,11 @@
-fetch('/albums')
-.then(response => response.json())
-.then(data => {
-    const album_ranking = data.albums;
+// Start the application
 
-    album_ranking.sort((a, b) => {
-        return (b.avg_score * b.fav_skip) - (a.avg_score * a.fav_skip);
-    })
+function start() {
+    main();
+    buttons();
+}
 
-    load_homepage(album_ranking);
-});
+// Homepage
 
 function load_top_three(album_ranking) {
     for (i=0;i<3;i++) {
@@ -169,6 +166,30 @@ function load_homepage(album_ranking) {
     }
 }
 
+// Rating Page
+
+function load_rating_page() {
+    // Show rating page, hide the others\
+    document.querySelector('#home-view').style.display = 'none';
+    document.querySelector('#rating-view').style.display = 'block';
+}
+
+// Entire App
+
+function main() {
+    fetch('/albums')
+    .then(response => response.json())
+    .then(data => {
+        const album_ranking = data.albums;
+
+        album_ranking.sort((a, b) => {
+            return (b.avg_score * b.fav_skip) - (a.avg_score * a.fav_skip);
+        })
+
+        load_homepage(album_ranking);
+    });
+}
+
 function mobile_adjust() {
     window.alert('You are using a mobile device, please note that this will change the stying of this webpage. The webpage will still work, but you will recieve a better experience if you use a larger screen.');
 
@@ -192,3 +213,15 @@ function mobile_adjust() {
         album.style.height = '70px';
     })
 }
+
+function buttons() {
+    document.querySelectorAll('.to-home').forEach(button => {
+        button.addEventListener('click', main);
+    })
+
+    document.querySelectorAll('.to-rank').forEach(button => {
+        button.addEventListener('click', load_rating_page);
+    })
+}
+
+start();
