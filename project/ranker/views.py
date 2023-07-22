@@ -1,4 +1,5 @@
-from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+import json
+from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -95,6 +96,7 @@ def song_by_album_and_track(request, album_id, track_number):
             score.favorite = data["favorite"]
         if data.get("skip") is not None:
             score.skip = data["skip"]
+        score.save()
 
 
 # Login/Logout/Register
