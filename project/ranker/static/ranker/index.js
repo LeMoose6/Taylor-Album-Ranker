@@ -1,3 +1,10 @@
+// Album names
+const names = ['Debut', 'Fearless', 'Speak Now', 'Red', '1989', 'Reputation', 'Lover', 'Folklore', 'Evermore', 'Midnights'];
+
+const border = ['darkcyan', 'goldenrod', 'indigo', 'darkred', 'lightskyblue', 'gray', 'plum', 'darkgray', 'peru', 'darkblue'];
+
+const background = ['lightseagreen', 'gold', 'rebeccapurple', 'firebrick', 'lightblue', 'dimgray', 'pink', 'lightgray', 'orange', 'royalblue']
+
 // Start the application
 
 function start() {
@@ -13,49 +20,12 @@ function load_top_three(album_ranking) {
     for (i=0;i<3;i++) {
         // Add an album
         album_element = document.createElement('div');
+        const album_index = album_ranking[i].id - 1;
 
         // Add the title and change the colors based on the album
-        if (album_ranking[i].id === 1) {
-            album_element.innerHTML = `<h2>${i + 1}. Debut</h2>`;
-            album_element.style.background = 'lightseagreen';
-            album_element.style.border = '8px solid darkcyan';
-        } else if (album_ranking[i].id === 2) {
-            album_element.innerHTML = `<h2>${i + 1}. Fearless</h2>`;
-            album_element.style.background = 'gold';
-            album_element.style.border = '8px solid goldenrod';
-        } else if (album_ranking[i].id === 3) {
-            album_element.innerHTML = `<h2>${i + 1}. Speak Now</h2>`;
-            album_element.style.background = 'rebeccapurple';
-            album_element.style.border = '8px solid indigo';
-        } else if (album_ranking[i].id === 4) {
-            album_element.innerHTML = `<h2>${i + 1}. Red</h2>`;
-            album_element.style.background = 'firebrick';
-            album_element.style.border = '8px solid darkred';
-        } else if (album_ranking[i].id === 5) {
-            album_element.innerHTML = `<h2>${i + 1}. 1989</h2>`;
-            album_element.style.background = 'lightblue';
-            album_element.style.border = '8px solid lightskyblue';
-        } else if (album_ranking[i].id === 6) {
-            album_element.innerHTML = `<h2>${i + 1}. reputation</h2>`;
-            album_element.style.background = 'dimgray';
-            album_element.style.border = '8px solid gray';
-        } else if (album_ranking[i].id === 7) {
-            album_element.innerHTML = `<h2>${i + 1}. Lover</h2>`;
-            album_element.style.background = 'pink';
-            album_element.style.border = '8px solid plum';
-        } else if (album_ranking[i].id === 8) {
-            album_element.innerHTML = `<h2>${i + 1}. folklore</h2>`;
-            album_element.style.background = 'lightgray';
-            album_element.style.border = '8px solid darkgray';
-        } else if (album_ranking[i].id === 9) {
-            album_element.innerHTML = `<h2>${i + 1}. evermore</h2>`;
-            album_element.style.background = 'orange';
-            album_element.style.border = '8px solid peru';
-        } else if (album_ranking[i].id === 10) {
-            album_element.innerHTML = `<h2>${i + 1}. Midnights</h2>`;
-            album_element.style.background = 'royalblue';
-            album_element.style.border = '8px solid blue';
-        }
+        album_element.innerHTML = `<h2>${i + 1}. ${names[album_index]}</h2>`;
+        album_element.style.border = `8px solid ${border[album_index]}`;
+        album_element.style.background = background[album_index]
 
         // Add the album cover, the class, and add it to the top three div
         album_element.innerHTML += `<img class='top-3-cover' src='${STATIC_URL}images/album_covers/${album_ranking[i].id}.jpeg' alt='album cover'>`;
@@ -66,51 +36,15 @@ function load_top_three(album_ranking) {
 
 function load_album_ranking_type(ranking, element) {
     element.innerHTML = '';
+    const score_margins = ['63.5', '58.5', '51.5', '68.5', '67', '53', '64', '60', '55.5', '51'];
     for (i=0;i<10;i++) {
         const album_element = document.createElement('div');
         album_element.classList.add('album-ranking');
+        album_index = ranking[i].id - 1;
 
-        if (ranking[i].id === 1) {
-            album_element.innerHTML = `<h3 style="margin: 5px 63.5% 5px 10px;">#${i + 1}. Debut</h3>`;
-            album_element.style.background = 'lightseagreen';
-            album_element.style.border = '4px solid darkcyan';
-        } else if (ranking[i].id === 2) {
-            album_element.innerHTML = `<h3 style="margin: 5px 58.5% 5px 10px;">#${i + 1}. Fearless</h3>`;
-            album_element.style.background = 'gold';
-            album_element.style.border = '4px solid goldenrod';
-        } else if (ranking[i].id === 3) {
-            album_element.innerHTML = `<h3 style="margin: 5px 51.5% 5px 10px;">#${i + 1}. Speak Now</h3>`;
-            album_element.style.background = 'rebeccapurple';
-            album_element.style.border = '4px solid indigo';
-        } else if (ranking[i].id === 4) {
-            album_element.innerHTML = `<h3 style="margin: 5px 68.5% 5px 10px;">#${i + 1}. Red</h3>`;
-            album_element.style.background = 'firebrick';
-            album_element.style.border = '4px solid darkred';
-        } else if (ranking[i].id === 5) {
-            album_element.innerHTML = `<h3 style="margin: 5px 67% 5px 10px;">#${i + 1}. 1989</h3>`;
-            album_element.style.background = 'lightblue';
-            album_element.style.border = '4px solid lightskyblue';
-        } else if (ranking[i].id === 6) {
-            album_element.innerHTML = `<h3 style="margin: 5px 53% 5px 10px;">#${i + 1}. reputation</h3>`;
-            album_element.style.background = 'dimgray';
-            album_element.style.border = '4px solid gray';
-        } else if (ranking[i].id === 7) {
-            album_element.innerHTML = `<h3 style="margin: 5px 64% 5px 10px;">#${i + 1}. Lover</h3>`;
-            album_element.style.background = 'pink';
-            album_element.style.border = '4px solid plum';
-        } else if (ranking[i].id === 8) {
-            album_element.innerHTML = `<h3 style="margin: 5px 60% 5px 10px;">#${i + 1}. folklore</h3>`;
-            album_element.style.background = 'lightgray';
-            album_element.style.border = '4px solid darkgray';
-        } else if (ranking[i].id === 9) {
-            album_element.innerHTML = `<h3 style="margin: 5px 55.5% 5px 10px;">#${i + 1}. evermore</h3>`;
-            album_element.style.background = 'orange';
-            album_element.style.border = '4px solid peru';
-        } else if (ranking[i].id === 10) {
-            album_element.innerHTML = `<h3 style="margin: 5px 51% 5px 10px;">#${i + 1}. Midnights</h3>`;
-            album_element.style.background = 'royalblue';
-            album_element.style.border = '4px solid blue';
-        }
+        album_element.innerHTML = `<h3 style="margin: 5px ${score_margins[album_index]}% 5px 10px;">#${i + 1}. ${names[album_index]}</h3>`;
+        album_element.style.background = background[album_index];
+        album_element.style.border = `4px solid ${border[album_index]}`;
 
         album_element.innerHTML += `<h4 margin: 0;">${ranking[i].score}</h4>`;
         element.append(album_element);
