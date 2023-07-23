@@ -1,10 +1,11 @@
 import json
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import Album, Score, Song, User
 
@@ -71,6 +72,7 @@ def songs_by_album(request, album_id):
     return JsonResponse({"songs": songs})
 
 
+@csrf_exempt
 @login_required
 def song_by_album_and_track(request, album_id, track_number):
     # Get models
@@ -91,12 +93,17 @@ def song_by_album_and_track(request, album_id, track_number):
     elif request.method == "PUT":
         data = json.loads(request.body)
         if data.get("score") is not None:
-            score.score = data["score"]
+            if data["score"] == "":
+                score.score = 0
+            else:
+                score.score = data["score"]
         if data.get("favorite") is not None:
             score.favorite = data["favorite"]
         if data.get("skip") is not None:
             score.skip = data["skip"]
         score.save()
+
+        return HttpResponse(status=204)
 
 
 # Login/Logout/Register
