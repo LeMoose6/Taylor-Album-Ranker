@@ -98,7 +98,7 @@ function load_homepage(album_ranking) {
     // Load the all album ranking
     load_album_rankings(album_ranking);
 
-    if (window.innerWidth < 500) {
+    if (window.innerWidth < 1000) {
         mobile_adjust();
     }
 }
@@ -247,7 +247,7 @@ function mobile_adjust() {
 
     // Replace header
     document.querySelector('#header').style.display = 'none';
-    document.querySelector('#top').innerHTML = '<img src="images/header.png" alt="header" style="width:100%;">'
+    document.querySelector('#top').innerHTML = `<img src="${STATIC_URL}images/header.png" alt="header" style="width:100%;">`
     document.querySelector('#main').marginTop = '0'
 
     // Change top three album section size
