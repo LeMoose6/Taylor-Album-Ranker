@@ -52,9 +52,8 @@ body {
     flex-wrap: nowrap;
 }
 
-#album-rank-overall, #album-rank-score, #album-rank-fav-skip {width: 33%;}
-
-#album-rank-overall h2, #album-rank-score h2, #album-rank-fav-skip h2 {
+.album-rank-container {
+    width: 33%;
     text-align: center;
     margin: 0;
 }
