@@ -106,6 +106,102 @@ function load_homepage(album_ranking) {
 // Rating Page
 
 function select_album(album_id) {
+    fetch(`/songs/${album_id}`)
+    .then(response => response.json())
+    .then(data => {
+        // Get songs
+        const songs = data.songs;
+
+        // Put element in a variable and clear it
+        const element = document.querySelector('#rating-rater-body');
+        element.innerHTML = '';
+
+        songs.forEach(song => {
+            // Create the song
+            const song_element = document.createElement('tr');
+
+            // Display the track number and song name
+            const info_data_element = document.createElement('td');
+            info_data_element.innerHTML = `<h5 class="rating-info">${song.track_number}: ${song.name}</h5>`;
+            song_element.append(info_data_element);
+
+            // Add Score Input
+            const score_data_element = document.createElement('td')
+            const score_element = document.createElement('input');
+            score_element.classList.add('rating-score');
+            score_element.setAttribute('value', song.score);
+            score_element.setAttribute('type', 'number');
+
+            // Upload changes to server
+            score_element.oninput = () => {
+                fetch(`/songs/${album_id}/${song.track_number}`, {
+                    method: 'PUT',
+                    body: JSON.stringify({
+                        'score': score_element.value,
+                    })
+                })
+            }
+
+            // Add element to parent element
+            score_data_element.append(score_element);
+            song_element.append(score_data_element);
+
+            // Add Favorite Input
+            const favorite_data_element = document.createElement('td');
+            const favorite_element = document.createElement('input');
+            favorite_element.classList.add('rating-favorite');
+            favorite_element.checked = song.favorite;
+            favorite_element.type = 'checkbox';
+
+            // Upload changes to the server
+            favorite_element.oninput = () => {
+                fetch(`/songs/${album_id}/${song.track_number}`, {
+                    method: 'PUT',
+                    body: JSON.stringify({
+                        'favorite': favorite_element.checked,
+                    })
+                })
+            }
+
+            // Add element to the parent element
+            favorite_data_element.append(favorite_element);
+            song_element.append(favorite_data_element);
+
+            // Add Skip Input
+            const skip_data_element = document.createElement('td');
+            const skip_element = document.createElement('input');
+            skip_element.classList.add('rating-skip');
+            skip_element.checked = song.skip;
+            skip_element.type = 'checkbox';
+
+            // Upload changes to server
+            skip_element.oninput = () => {
+                fetch(`/songs/${album_id}/${song.track_number}`, {
+                    method: 'PUT',
+                    body: JSON.stringify({
+                        'skip': skip_element.checked,
+                    })
+                })
+            }
+
+            // Add element to parent element
+            skip_data_element.append(skip_element);
+            song_element.append(skip_data_element);
+            
+            // Add CSS
+            song_element.style.background = background[album_id - 1];
+            info_data_element.style.border = `5px solid ${border[album_id - 1]}`;
+            score_data_element.style.border = `5px solid ${border[album_id - 1]}`;
+            favorite_data_element.style.border = `5px solid ${border[album_id - 1]}`;
+            skip_data_element.style.border = `5px solid ${border[album_id - 1]}`;
+
+            // Add the element to the DOM
+            element.append(song_element);
+        })
+    })
+    .catch(error => {
+        alert(error);
+    });
 }
 
 function album_selector() {
