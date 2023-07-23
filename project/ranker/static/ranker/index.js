@@ -129,7 +129,7 @@ function select_album(album_id) {
             const score_data_element = document.createElement('td')
             const score_element = document.createElement('input');
             score_element.classList.add('rating-score');
-            score_element.setAttribute('value', song.score);
+            score_element.setAttribute('placeholder', song.score);
             score_element.setAttribute('type', 'number');
 
             // Upload changes to server
