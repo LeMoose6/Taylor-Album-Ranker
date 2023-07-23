@@ -36,6 +36,6 @@ class Song(models.Model):
 class Score(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="scores")
     song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name="scores")
-    score = models.IntegerField(default=0)
+    score = models.FloatField(default=0.0)
     skip = models.BooleanField(default=False)
     favorite = models.BooleanField(default=False)
