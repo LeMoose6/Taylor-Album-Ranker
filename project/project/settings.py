@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-h@=zk&mjg@q3_@uhgiz!8ydxx)tom9k)kpl(re%vry6u^2arus
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["taylor-album-ranker.lemoose6.repl.co"]
 
 
 # Application definition
@@ -123,3 +123,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CSRF_TRUSTED_ORIGINS = ["https://taylor-album-ranker.lemoose6.repl.co"]
